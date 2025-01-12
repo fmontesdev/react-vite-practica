@@ -1,4 +1,5 @@
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
+import process from 'process';
 
 const executor = process.argv[2]; // Nombre del ejecutor (PARAM_EXECUTOR)
 const motivo = process.argv[3]; // Motivo de la ejecución (PARAM_MOTIVO)
