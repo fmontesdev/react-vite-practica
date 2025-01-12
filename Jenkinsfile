@@ -56,10 +56,10 @@ pipeline {
         }
         stage('Push_Changes') {
             steps {
-                withCredentials([string(credentialsId: 'github_token', variable: 'GIT_TOKEN')]) {
-                    script {
+                script {
+                    withCredentials([string(credentialsId: 'github_token', variable: 'GIT_TOKEN')]) {
                         echo "Pushing changes to the repository..."
-                        sh "node jenkinsScripts/pushChanges.js '${params.Executor}' '${params.Motivo}'"
+                        sh "node jenkinsScripts/pushChanges.js '${params.Executor}' '${params.Motivo}' '${GIT_TOKEN}'"
                     }
                 }
             }
