@@ -43,6 +43,15 @@ pipeline {
                 }
             }
         }
+        stage('Update_Readme') {
+            steps {
+                script {
+                    echo "Updating README.md..."
+                    // Llama al script y pasa el resultado del Stage "Test"
+                    sh 'node jenkinsScripts/updateReadme.js ${currentBuild.currentResult == "FAILURE" ? "failure" : "success"}'
+                }
+            }
+        }
     }
     post {
         always {
