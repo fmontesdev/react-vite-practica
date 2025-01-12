@@ -27,6 +27,14 @@ pipeline {
                 }
             }
         }
+        stage('Test') {
+            steps {
+                script {
+                    echo "Running tests..."
+                    sh 'npm test'
+                }
+            }
+        }
     }
     post {
         always {
