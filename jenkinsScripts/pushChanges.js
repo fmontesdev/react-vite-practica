@@ -9,6 +9,9 @@ try {
     // Asegúrate de estar en la rama `ci_jenkins`
     execSync('git checkout ci_jenkins', { stdio: 'inherit' });
 
+    // Configurar el comportamiento de pull (merge por defecto)
+    execSync('git config pull.rebase false', { stdio: 'inherit' });
+
     // Sincronizar la rama local con la remota
     console.log('Sincronizando con la rama remota...');
     execSync(`git pull https://token:${gitToken}@github.com/fmontesdev/react-vite-practica.git ci_jenkins`, { stdio: 'inherit' });
