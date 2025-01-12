@@ -1,8 +1,15 @@
-const fs = require('fs');
-const path = require('path');
+// updateReadme.js
+import { readFileSync, writeFileSync } from 'fs';
+import { join } from 'path';
+import { fileURLToPath } from 'url';
+import { dirname } from 'path';
+
+// Obtener __dirname en módulos ES
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 // Ruta al archivo README.md
-const readmePath = path.join(__dirname, '..', 'README.md');
+const readmePath = join(__dirname, '..', 'README.md');
 
 // Badges
 const failureBadge = '![Tests](https://img.shields.io/badge/test-failure-red)';
@@ -12,7 +19,7 @@ const successBadge = '![Tests](https://img.shields.io/badge/tested%20with-Cypres
 const testResult = process.argv[2]; // 'failure' o 'success'
 
 // Lee el archivo README.md
-let readmeContent = fs.readFileSync(readmePath, 'utf-8');
+let readmeContent = readFileSync(readmePath, 'utf-8');
 
 // Busca el marcador donde se insertará el badge
 const marker = 'RESULTADO DE LOS ÚLTIMOS TESTS:';
@@ -25,7 +32,7 @@ if (markerIndex !== -1) {
     readmeContent = beforeMarker + afterMarker;
 
     // Escribe los cambios en el archivo README.md
-    fs.writeFileSync(readmePath, readmeContent, 'utf-8');
+    writeFileSync(readmePath, readmeContent, 'utf-8');
     console.log('README.md actualizado correctamente.');
 } else {
     console.error('No se encontró el marcador en README.md.');
