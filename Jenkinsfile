@@ -23,7 +23,7 @@ pipeline {
                 script {
                     echo "Running linter..."
                     sh 'npm install'
-                    sh 'npx eslint . --ext .js,.jsx || exit 1'
+                    sh 'npx eslint . --ext .js,.jsx --ignore-path .eslintignore || exit 1'
                 }
             }
         }
