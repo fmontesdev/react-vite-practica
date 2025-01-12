@@ -7,8 +7,8 @@ const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 
 try {
     // Configura el usuario de Git
-    execSync('git config --global user.name "fmontesdev"');
-    execSync('git config -- global user.email "f.montesdoria@gmail.com"');
+    execSync('git config user.name "fmontesdev"');
+    execSync('git config user.email "f.montesdoria@gmail.com"');
 
     // // Asegúrate de estar en la rama `ci_jenkins`
     // execSync('git checkout ci_jenkins', { stdio: 'inherit' });
