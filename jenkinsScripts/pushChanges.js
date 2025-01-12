@@ -19,7 +19,7 @@ try {
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
 
     // Hacer push de los cambios al repositorio remoto usando el token
-    execSync(`git push https://token:${gitToken}@github.com/owner/repo.git`, { stdio: 'inherit' });
+    execSync('git push https://token:' + gitToken + '@github.com/owner/repo.git', { stdio: 'inherit' });
 
     console.log('Cambios realizados y subidos correctamente.');
 } catch (error) {
