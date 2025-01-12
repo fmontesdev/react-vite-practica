@@ -7,6 +7,9 @@ const gitToken = process.env.GIT_TOKEN; // Token proporcionado por Jenkins
 // Mensaje del commit
 const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 
+// URL del repositorio con token
+const repoUrl = `https://token:${gitToken}@github.com/owner/repo.git`;
+
 try {
     // Configurar el usuario y correo de Git
     execSync('git config user.name "Jenkins Bot"', { stdio: 'inherit' });
@@ -18,13 +21,11 @@ try {
     // Crear el commit con el mensaje proporcionado
     execSync(`git commit -m "${commitMessage}"`, { stdio: 'inherit' });
 
-    // Hacer push de los cambios al repositorio remoto usando el token
-    execSync('git push https://token:' + gitToken + '@github.com/owner/repo.git', { stdio: 'inherit' });
+    // Hacer push de los cambios al repositorio remoto
+    execSync(`git push ${repoUrl}`, { stdio: 'inherit' });
 
     console.log('Cambios realizados y subidos correctamente.');
 } catch (error) {
     console.error('Error al realizar los cambios:', error.message);
     process.exit(1);
 }
-
-
