@@ -5,6 +5,9 @@ pipeline {
         string(name: 'Motivo', defaultValue: '', description: 'Motivo para ejecutar la pipeline')
         string(name: 'ChatID', defaultValue: '', description: 'Chat ID de Telegram para notificaciones')
     }
+    tools {
+    nodejs 'NodeJS_18'
+    }
     stages {
         stage('Peticion de datos') {
             steps {
