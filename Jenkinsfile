@@ -50,10 +50,7 @@ pipeline {
                     // Llama al script y pasa el resultado del Stage "Test"
                     def buildResult = currentBuild.currentResult == 'FAILURE' ? 'failure' : 'success'
                     echo "Test Result Status: ${buildResult}"
-                    sh """
-                        cd ${WORKSPACE}
-                        node jenkinsScripts/updateReadme.js '${buildResult}'
-                    """
+                    sh 'node jenkinsScripts/updateReadme.js ${buildResult}'
                 }
             }
         }
