@@ -35,6 +35,14 @@ pipeline {
                 }
             }
         }
+        stage('Build') {
+            steps {
+                script {
+                    echo "Building the project..."
+                    sh 'npm run build'
+                }
+            }
+        }
     }
     post {
         always {
