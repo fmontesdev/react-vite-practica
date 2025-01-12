@@ -6,7 +6,13 @@ pipeline {
         string(name: 'ChatID', defaultValue: '', description: 'Chat ID de Telegram para notificaciones')
     }
     tools {
-    nodejs 'NodeJS_18'
+        nodejs 'NodeJS_18'
+    }
+    environment {
+        linterResult = 'SUCCESS'
+        testResult = 'SUCCESS'
+        updateReadmeResult = 'SUCCESS'
+        deployToVercelResult = 'SUCCESS'
     }
     stages {
         stage('Peticion de datos') {
