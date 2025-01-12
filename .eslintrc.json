@@ -31,7 +31,12 @@
     "react/jsx-props-no-spreading": 0,
     "react/prop-types": 0,
     "import/no-extraneous-dependencies": 0,
-    "no-shadow": 0
+    "no-shadow": 0,
+    "no-console": "off",
+    "no-underscore-dangle": ["error", { 
+      "allow": ["__filename", "__dirname"]
+    }],
+    "import/no-duplicates": "error"
   },
   "settings": {
     "react": {
