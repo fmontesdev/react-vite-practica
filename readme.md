@@ -55,8 +55,3 @@ The example application is a social blogging site (i.e. a Medium.com clone) call
 <br />
 
 [![Brought to you by Thinkster](https://raw.githubusercontent.com/gothinkster/realworld/master/media/end.png)](https://thinkster.io)
-
-
-RESULTADO DE LOS ÚLTIMOS TESTS:
-
-![Tests](https://img.shields.io/badge/tested%20with-Cypress-04C38E.svg)
