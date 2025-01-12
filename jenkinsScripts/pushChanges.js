@@ -9,6 +9,10 @@ try {
     // Asegúrate de estar en la rama `ci_jenkins`
     execSync('git checkout ci_jenkins', { stdio: 'inherit' });
 
+    // Sincronizar la rama local con la remota
+    console.log('Sincronizando con la rama remota...');
+    execSync(`git pull https://token:${gitToken}@github.com/fmontesdev/react-vite-practica.git ci_jenkins`, { stdio: 'inherit' });
+
     // Configura el usuario de Git
     execSync('git config user.name "fmontesdev"');
     execSync('git config user.email "f.montesdoria@gmail.com"');
