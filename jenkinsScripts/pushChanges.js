@@ -12,7 +12,11 @@ const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 const repoUrl = `https://token:${gitToken}@github.com/fmontesdev/react-vite-practica.git`;
 
 try {
-    // Asegurarse de estar en la rama `ci_jenkins`
+    // Asegurarse de que todo está comprometido o descartado antes de cambiar de rama
+    execSync('git add README.md', { stdio: 'inherit' });
+    execSync(`git commit -m "Temp commit to prepare for branch switch"`, { stdio: 'inherit' });
+
+    // Cambiar a la rama `ci_jenkins`
     execSync('git checkout ci_jenkins', { stdio: 'inherit' });
 
     // Configurar el usuario y correo de Git
