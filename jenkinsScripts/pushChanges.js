@@ -9,7 +9,7 @@ const gitToken = process.env.GIT_TOKEN; // Token proporcionado por Jenkins
 const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 
 // URL del repositorio con token
-const repoUrl = `https://token:${gitToken}@github.com/owner/repo.git`;
+const repoUrl = `https://token:${gitToken}@github.com/fmontesdev/react-vite-practica.git`;
 
 try {
     // Asegurarse de estar en la rama `ci_jenkins`
