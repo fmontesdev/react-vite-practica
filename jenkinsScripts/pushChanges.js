@@ -12,6 +12,9 @@ const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 const repoUrl = `https://token:${gitToken}@github.com/owner/repo.git`;
 
 try {
+    // Asegurarse de estar en la rama `ci_jenkins`
+    execSync('git checkout ci_jenkins', { stdio: 'inherit' });
+
     // Configurar el usuario y correo de Git
     execSync('git config user.name "Jenkins Bot"', { stdio: 'inherit' });
     execSync('git config user.email "jenkins@pipeline.com"', { stdio: 'inherit' });
