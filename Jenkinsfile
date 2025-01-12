@@ -64,6 +64,33 @@ pipeline {
                 }
             }
         }
+        stage('Deploy_to_Vercel') {
+            when {
+                expression {
+                    currentBuild.result == null || currentBuild.result == 'SUCCESS'
+                }
+            }
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'vercel_token', variable: 'VERCEL_TOKEN')]) {
+                        sh 'npm install -g vercel'
+                        sh 'node jenkinsScripts/deployToVercel.js'
+                    }
+                }
+            }
+            post {
+                success {
+                    script {
+                        deployToVercelResult = 'SUCCESS'
+                    }
+                }
+                failure {
+                    script {
+                        deployToVercelResult = 'FAILURE'
+                    }
+                }
+            }
+        }
     }
     post {
         always {
