@@ -15,5 +15,25 @@ pipeline {
                 }
             }
         }
+        stage('Linter') {
+            steps {
+                script {
+                    echo "Running linter..."
+                    sh 'npm install'
+                    sh 'npx eslint . --ext .js,.jsx || exit 1'
+                }
+            }
+        }
+    }
+    post {
+        always {
+            echo 'Pipeline completed.'
+        }
+        success {
+            echo 'Pipeline executed successfully.'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
     }
 }
