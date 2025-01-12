@@ -6,6 +6,9 @@ const gitToken = process.env.GIT_TOKEN; // Token proporcionado por Jenkins
 const commitMessage = `Pipeline ejecutada por ${executor}. Motivo: ${motivo}`;
 
 try {
+    // Asegúrate de estar en la rama `ci_jenkins`
+    execSync('git checkout ci_jenkins', { stdio: 'inherit' });
+
     // Configura el usuario de Git
     execSync('git config user.name "fmontesdev"');
     execSync('git config user.email "f.montesdoria@gmail.com"');
