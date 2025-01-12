@@ -91,6 +91,24 @@ pipeline {
                 }
             }
         }
+        stage('Notificacion') {
+            steps {
+                script {
+                    withCredentials([string(credentialsId: 'telegram_token', variable: 'TELEGRAM_TOKEN')]) {
+                        def message = """
+                        Se ha ejecutado la pipeline de Jenkins con los siguientes resultados:
+                        - Linter stage: ${linterResult}
+                        - Test stage: ${testResult}
+                        - Update Readme stage: ${updateReadmeResult}
+                        - Deploy to Vercel stage: ${deployToVercelResult}
+                        """
+                        sh """
+                        curl -s -X POST https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage -d chat_id=${params.ChatID} -d text="${message}"
+                        """
+                    }
+                }
+            }
+        }
     }
     post {
         always {
